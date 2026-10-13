@@ -34,13 +34,7 @@ jobs:
         shell: pwsh
         run: Remove-Item AssettoServer/global.json -ErrorAction SilentlyContinue
 
-      - name: Derle
-        working-directory: AssettoServer/CarMenuPlugin
-        run: dotnet publish -c Release -r win-x64
-
-      - name: Sonucu yukle
-        uses: actions/upload-artifact@v4
-        with:
-          name: CarMenuPlugin
-          path: AssettoServer/out-win-x64/plugins/CarMenuPlugin
-          if-no-files-found: error
+      - name: Namespace ara (gecici)
+        shell: pwsh
+        run: |
+          Get-ChildItem AssettoServer -Recurse -Filter *.cs | Select-String -Pattern 'interface IAssettoServerAutostart|class OnlineEvent' | ForEach-Object {
