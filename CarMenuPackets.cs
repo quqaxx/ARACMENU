@@ -1,4 +1,4 @@
-using AssettoServer.Shared.Network.Packets.Shared;
+using AssettoServer.Network.ClientMessages;
 
 namespace CarMenuPlugin;
 

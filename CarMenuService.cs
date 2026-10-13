@@ -6,7 +6,7 @@ using Serilog;
 
 namespace CarMenuPlugin;
 
-public class CarMenuService : BackgroundService, IAssettoServerAutostart
+public class CarMenuService : BackgroundService
 {
     private readonly EntryCarManager _entryCars;
     private readonly CarMenuConfiguration _config;
