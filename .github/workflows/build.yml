@@ -37,4 +37,15 @@ jobs:
       - name: Namespace ara (gecici)
         shell: pwsh
         run: |
-          Get-ChildItem AssettoServer -Recurse -Filter *.cs | Select-String -Pattern 'interface IAssettoServerAutostart|class OnlineEvent' | ForEach-Object {
+          Get-ChildItem AssettoServer -Recurse -Filter *.cs | Select-String -Pattern 'interface IAssettoServerAutostart|class OnlineEvent' | ForEach-Object { $ns = (Select-String -Path $_.Path -Pattern '^namespace ' | Select-Object -First 1).Line; "$($_.Path) | $($_.Line.Trim()) | $ns" }
+
+      - name: Derle
+        working-directory: AssettoServer/CarMenuPlugin
+        run: dotnet publish -c Release -r win-x64
+
+      - name: Sonucu yukle
+        uses: actions/upload-artifact@v4
+        with:
+          name: CarMenuPlugin
+          path: AssettoServer/out-win-x64/plugins/CarMenuPlugin
+          if-no-files-found: error
