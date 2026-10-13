@@ -1,4 +1,4 @@
-name: Build WeatherControlPlugin
+name: Build CarMenuPlugin
 
 on:
   push:
@@ -41,6 +41,6 @@ jobs:
       - name: Sonucu yukle
         uses: actions/upload-artifact@v4
         with:
-          name: WeatherControlPlugin
+          name: CarMenuPlugin
           path: AssettoServer/out-win-x64/plugins/CarMenuPlugin
           if-no-files-found: error
